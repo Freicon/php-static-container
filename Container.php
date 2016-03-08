@@ -3,6 +3,7 @@
 namespace Freicon\StaticContainer;
 
 use Pimple\ServiceProviderInterface;
+use Pimple\Tests\Fixtures\PimpleServiceProvider;
 
 /**
  * Container main class.
@@ -38,6 +39,10 @@ class Container extends \Pimple\Container
         call_user_func_array(array(self::$container, $name), $arguments);
     }
 
+    public static function lazyRegister(ServiceProviderInterface $interface) {
+        self::registerCommand('register', array($interface));
+    }
+
     /**
      * Returns the current registered Container Instance
      * @return \Pimple\Container
@@ -57,7 +62,7 @@ class Container extends \Pimple\Container
      * @param $command
      * @param $args
      */
-    private function registerCommand($command, $args)
+    private static function registerCommand($command, $args)
     {
         self::$commands[] = array('command' => $command, 'args' => $args);
     }
