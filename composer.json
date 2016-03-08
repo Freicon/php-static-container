@@ -1,0 +1,23 @@
+{
+  "name": "freicon/static-container",
+  "description": "a static pimple facade for registry usage and other things",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Frank Hildebrandt",
+      "email": "fhildebrandt@freicon.de"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "./Container.php"
+    ]
+  },
+  "require": {
+    "pimple/pimple": "2.*|3.*"
+  },
+  "require-dev": {
+
+  }
+}
