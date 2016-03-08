@@ -32,6 +32,12 @@ class Container extends \Pimple\Container
         }
     }
 
+    public function __call($name, $arguments)
+    {
+        $this->registerCommand($name, $arguments);
+        call_user_func_array(array(self::$container, $name), $arguments);
+    }
+
     /**
      * Returns the current registered Container Instance
      * @return \Pimple\Container
