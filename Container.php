@@ -14,6 +14,11 @@ class Container extends \Pimple\Container
      */
     private static $container;
 
+    /**
+     * @var \Pimple\Container
+     */
+    private static $outerContainer;
+
     private static $commands = array();
 
     /**
@@ -33,10 +38,13 @@ class Container extends \Pimple\Container
      */
     public static function instance()
     {
+        if (!self::$outerContainer) {
+            self::$outerContainer = new static();
+        }
         if (!self::$container) {
             self::$container = new \Pimple\Container();
         }
-        return self::$container;
+        return self::$outerContainer;
     }
 
     /**
